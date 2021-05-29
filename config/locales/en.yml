@@ -221,6 +221,7 @@ en:
       assigned: 'Assigned!'
       failed_to_assign: 'Assignment failed'
       email_already_exist: 'Email already exist'
+      cannot_delete_other_member: 'You cannot delete members other than yourself'
       cannot_delete_the_leader: 'The leader cannot be deleted'
       does_not_exist_email: 'Email does not exist. Please make an account'
       cannot_delete_only_a_member: 'This user is only a member of this team and cannot be deleted'
