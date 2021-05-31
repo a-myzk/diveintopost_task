@@ -27,15 +27,19 @@ class AssignsController < ApplicationController
   end
 
   def assign_destroy(assign, assigned_user)
-    if assigned_user == assign.team.owner
-      I18n.t('views.messages.cannot_delete_the_leader')
-    elsif Assign.where(user_id: assigned_user.id).count == 1
-      I18n.t('views.messages.cannot_delete_only_a_member')
-    elsif assign.destroy
-      set_next_team(assign, assigned_user)
-      I18n.t('views.messages.delete_member')
-    else
-      I18n.t('views.messages.cannot_delete_member_4_some_reason')
+    if current_user == assign.team.owner || current_user == assign.user #ログインユーザーがリーダー または ログインユーザーが選択ユーザー
+      if assigned_user == assign.team.owner
+        I18n.t('views.messages.cannot_delete_the_leader') #リーダーは削除できません。
+      elsif current_user != assign.team.owner && current_user != assign.user
+        I18n.t('views.messages.cannot_delete_other_member') #自分以外のユーザーは削除できません。
+      elsif Assign.where(user_id: assigned_user.id).count == 1
+        I18n.t('views.messages.cannot_delete_only_a_member') #このユーザーはこのチームにしか所属していないため、削除できません。
+      elsif assign.destroy
+        set_next_team(assign, assigned_user)
+        I18n.t('views.messages.delete_member') #メンバーを削除しました。
+      else
+        I18n.t('views.messages.cannot_delete_member_4_some_reason') #なんらかの原因で、削除できませんでした。
+      end
     end
   end
 
