@@ -30,7 +30,7 @@ class AssignsController < ApplicationController
     if current_user == assign.team.owner || current_user == assign.user #ログインユーザーがリーダー または ログインユーザーが選択ユーザー
       if assigned_user == assign.team.owner
         I18n.t('views.messages.cannot_delete_the_leader') #リーダーは削除できません。
-      elsif current_user != assign.user
+      elsif current_user != assign.team.owner && current_user != assign.user
         I18n.t('views.messages.cannot_delete_other_member') #自分以外のユーザーは削除できません。
       elsif Assign.where(user_id: assigned_user.id).count == 1
         I18n.t('views.messages.cannot_delete_only_a_member') #このユーザーはこのチームにしか所属していないため、削除できません。
