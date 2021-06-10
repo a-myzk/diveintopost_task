@@ -243,6 +243,7 @@ ja:
       select_team: 'チーム選択'
       create_agenda: 'アジェンダ作成'
       delete_agenda: 'アジェンダ削除'
+      cannot_delete_agenda: 'チームオーナー以外は削除できません'
       input_agenda_title: 'タイトル入力'
       input_team_name: 'チーム名を入力してください'
       recent_posts: '最近投稿された記事'
