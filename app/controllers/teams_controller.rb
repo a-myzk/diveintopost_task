@@ -49,6 +49,9 @@ class TeamsController < ApplicationController
 
   def change_owner
     if @team.update(owner_id: params[:owner_id])
+      email = @team.owner.email
+      password = @team.owner.password
+      AssignMailer.assign_mail(email, password).deliver
       redirect_to @team, notice: I18n.t('views.messages.change_owner')
     else
       flash.now[:error] = I18n.t('views.messages.failed_to_save_team')
