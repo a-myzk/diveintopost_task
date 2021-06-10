@@ -45,6 +45,7 @@
                   <% end %>
                 </li>
               <% end %>
+                <%= link_to I18n.t('views.button.delete'), agenda_path(id: agenda.id), method: :delete, class: 'btn btn-sm btn-danger agenda_delete' %>
               <li class="nav-item">
                 <%= link_to new_agenda_article_path(agenda), class: 'nav-link' do %>
                   <p>+ <%= I18n.t('views.messages.create_article') %></p>
