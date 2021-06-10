@@ -223,7 +223,9 @@ ja:
       update_team: 'チーム更新に成功しました！'
       delete_team: 'チーム削除に成功しました！'
       update_profile: 'プロフィールを編集しました！'
+      change_owner: '権限を変更しました'
       complete_registration: '登録完了'
+      charge_of_the_owner: 'オーナー権限が付与されました'
       edit_article: '記事を編集する'
       input_title: '記事タイトルを入力してください'
       input_content: '内容を入力してください'
@@ -260,6 +262,7 @@ ja:
       delete: '削除'
       create: '作成'
       invite: '招待'
+      change: '権限移動'
     top:
       line1: 'このアプリケーションは、チームごと、議題ごとに別れて'
       line2: '特定のイシュー（議題）をメンバーで見やすく共有するためのアプリケーションです'
