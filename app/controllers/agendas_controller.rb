@@ -25,6 +25,10 @@ class AgendasController < ApplicationController
     if current_user == @agenda.user || current_user == @agenda.team.owner
       @agenda.destroy
       redirect_to dashboard_url, notice: I18n.t('views.messages.delete_agenda')
+      users = User.where(id: Assign.where(team_id: @agenda.team_id).pluck(:user_id))
+      users.each do |user|
+        AssignMailer.delete_agenda_mail(user.email).deliver
+      end
     else
       redirect_to dashboard_url, notice: I18n.t('views.messages.cannot_delete_agenda')
     end
